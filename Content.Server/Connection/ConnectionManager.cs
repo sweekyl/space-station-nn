@@ -168,6 +168,10 @@ namespace Content.Server.Connection
         {
             if (args.NewStatus == SessionStatus.Connected)
             {
+                var playerName = args.Session.Name;
+
+                _chatManager.DispatchServerAnnouncement($"Игрок {playerName} зашел на сервер!");
+
                 AdminAlertIfSharedConnection(args.Session);
             }
         }
